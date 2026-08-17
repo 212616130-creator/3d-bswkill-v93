@@ -188,7 +188,6 @@ tr.row-fail:hover td {{ background:#ffe8e0; }}
   <h3>🔬 V9 六杀引擎</h3>
   <p><strong>每位置双杀码：</strong>kill1（V8条件决策树）+ kill2（独立算术公式），6杀全中为命中</p>
   <p><strong>kill2公式：</strong>百位=(b-span+9)%10 · 十位=(s-mid+5)%10 · 个位=(g²+|b-g|)%10</p>
-  <p><strong>重叠处理：</strong>kill2==kill1时自动+1偏移，保证2个杀码不重复</p>
 </div>
 <div class="info-card">
   <h3>📋 策略详情</h3>

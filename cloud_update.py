@@ -222,21 +222,15 @@ O_FB = [lambda b,s,g:(b+s+g+1)%10, lambda b,s,g:(b*s)%10]
 def kill_h2(b, s, g):
     span = max(b, s, g) - min(b, s, g)
     k = (b - span + 9) % 10
-    k1 = kill_h(b, s, g)
-    if k == k1: k = (k + 1) % 10
     return k
 
 def kill_t2(b, s, g):
     mid = sorted([b, s, g])[1]
     k = (s - mid + 5) % 10
-    k1 = kill_t(b, s, g)
-    if k == k1: k = (k + 1) % 10
     return k
 
 def kill_o2(b, s, g):
     k = (g*g + abs(b-g)) % 10
-    k1 = kill_o(b, s, g)
-    if k == k1: k = (k + 1) % 10
     return k
 
 def apply_fb(kill, prev, fb_list, b, s, g):
@@ -457,7 +451,6 @@ td{{padding:6px;text-align:center;border-bottom:1px solid #f0f0f0}}
 <h3>📋 V9 六杀引擎</h3>
 <p><strong>每位置双杀码：</strong>kill1（V8条件决策树）+ kill2（独立算术公式）<br>
 <strong>kill2公式：</strong>百=(b-span+9)%10 · 十=(s-mid+5)%10 · 个=(g²+|b-g|)%10<br>
-<strong>重叠处理：</strong>kill2==kill1时自动+1偏移<br>
 <strong>6杀全中：</strong>近100期 <strong>{all6_pct:.1f}%</strong> · 全量≈53%（基线51.2%）</p>
 <div class="warn">
 ⚠️ <strong>重要提示：</strong>彩票本质是随机游戏。近100期3杀综合<strong>{acc_all:.1f}%</strong>，6杀全中<strong>{all6_pct:.1f}%</strong>。6杀全中理论上限≈66%，当前已显著超越随机基线51.2%。请理性参考。

@@ -133,23 +133,17 @@ def kill_h2(b, s, g):
     """百位第二杀码: (b-span+9)%10 — V9.1 100期6杀全中率77%→82%"""
     span = max(b, s, g) - min(b, s, g)
     k = (b - span + 9) % 10
-    k1 = kill_hundreds_formula(type('D',(),{'hundreds':b,'tens':s,'ones':g})())
-    if k == k1: k = (k + 1) % 10
     return k
 
 def kill_t2(b, s, g):
     """十位第二杀码: (s-mid+5)%10 — V9.2 100期6杀全中82%→86%"""
     mid = sorted([b, s, g])[1]
     k = (s - mid + 5) % 10
-    k1 = kill_tens_formula(type('D',(),{'hundreds':b,'tens':s,'ones':g})())
-    if k == k1: k = (k + 1) % 10
     return k
 
 def kill_o2(b, s, g):
     """个位第二杀码: (g²+|b-g|)%10 — V9.3 100期86%→87%, 200期80.5%→82.5%"""
     k = (g*g + abs(b-g)) % 10
-    k1 = kill_ones_formula(type('D',(),{'hundreds':b,'tens':s,'ones':g})())
-    if k == k1: k = (k + 1) % 10
     return k
 
 def apply_fallback(kill, prev_kill, fallback_list, b, s, g):
